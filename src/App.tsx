@@ -16,7 +16,7 @@ function App() {
       url: "https://github.com/nishinoyama",
     },
     {
-      social: "atcoder",
+      social: "AtCoder",
       url: "https://atcoder.jp/users/nishinoyama",
     },
     {
