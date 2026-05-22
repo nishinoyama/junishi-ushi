@@ -1,73 +1,80 @@
-# React + TypeScript + Vite
+# junishi-ushi
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+nishinoyama のポートフォリオサイトです。React、TypeScript、Vite で実装し、Firebase Hosting へデプロイする構成になっています。
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+トップページではプロフィール画像、サイトタイトル、簡単な説明、SNS リンクを表示します。サンプル UI として、クリックするたびに Collatz 関数で値が変わるカウンターも置いています。
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19
+- TypeScript
+- Vite
+- Firebase Hosting
+- ESLint
 
-## Expanding the ESLint configuration
+## Directory Structure
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```text
+.
+├── public/              # 静的アセット
+├── src/
+│   ├── assets/          # アプリ内で import する画像
+│   ├── App.tsx          # メイン画面
+│   ├── App.css          # 画面固有のスタイル
+│   ├── index.css        # グローバルスタイル
+│   └── main.tsx         # React のエントリポイント
+├── firebase.json        # Firebase Hosting 設定
+├── package.json         # scripts と依存関係
+└── vite.config.ts       # Vite 設定
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+依存関係をインストールします。
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+pnpm install
 ```
+
+開発サーバーを起動します。
+
+```bash
+pnpm dev
+```
+
+ビルドします。
+
+```bash
+pnpm build
+```
+
+ビルド結果をローカルで確認します。
+
+```bash
+pnpm preview
+```
+
+Lint を実行します。
+
+```bash
+pnpm lint
+```
+
+## Deployment
+
+Firebase Hosting の公開ディレクトリは `dist` です。`pnpm build` で生成したファイルが配信対象になります。
+
+```bash
+pnpm build
+firebase deploy
+```
+
+GitHub Actions には Firebase Hosting 用の workflow があり、Pull Request と merge を契機にホスティングへのデプロイを行う設定です。
+
+## Notes
+
+- Firebase の default project は `.firebaserc` で `nishinoyama-net` に設定されています。
+- アプリ本体は現状ほぼ `src/App.tsx` にまとまっています。
+- `.agents/skills` は開発補助用のスキル定義で、Web アプリの実行には直接関係しません。
