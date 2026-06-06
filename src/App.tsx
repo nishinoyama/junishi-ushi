@@ -27,6 +27,10 @@ function App() {
       social: "note",
       url: "https://note.com/nishinoyama0312",
     },
+    {
+      social: "pixiv",
+      url: "https://www.pixiv.net/users/116043614",
+    },
   ];
 
   return (
