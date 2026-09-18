@@ -1,14 +1,39 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="nishinoyama portfolio" />
+    <meta name="description" content="nishinoyamaのプロフィールと各種ソーシャルアカウントをまとめたポートフォリオ" />
+    <link rel="stylesheet" href="/src/index.css" />
     <title>nishinoyama portfolio</title>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <main>
+      <section class="profile" aria-labelledby="profile-heading">
+        <img class="profile-image" src="/rimmo.webp" width="120" height="120" alt="白と赤を基調としたオリジナルキャラクター、リモ" />
+        <div>
+          <h1 id="profile-heading">nishinoyama</h1>
+          <p>nishinoyama ポートフォリオ</p>
+        </div>
+        <button class="counter" type="button" data-collatz-counter disabled>
+          Count is <span aria-live="polite">27</span>
+        </button>
+        <noscript><p class="enhancement-note">Collatz ボタンは JavaScript 有効時に動作します。</p></noscript>
+      </section>
+
+      <section class="socials" aria-labelledby="socials-heading">
+        <h2 id="socials-heading">Socials</h2>
+        <ul>
+          <li><a href="https://x.com/nishinoyama0312" target="_blank" rel="noopener noreferrer">X</a></li>
+          <li><a href="https://github.com/nishinoyama" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://atcoder.jp/users/nishinoyama" target="_blank" rel="noopener noreferrer">AtCoder</a></li>
+          <li><a href="https://www.youtube.com/@nishinoyama0264" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+          <li><a href="https://note.com/nishinoyama0312" target="_blank" rel="noopener noreferrer">note</a></li>
+          <li><a href="https://www.pixiv.net/users/116043614" target="_blank" rel="noopener noreferrer">pixiv</a></li>
+        </ul>
+      </section>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
